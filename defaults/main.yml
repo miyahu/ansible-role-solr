@@ -21,8 +21,15 @@ solr_timezone: "UTC"
 solr_cores:
   - collection1
 
+
 solr_config_file: /etc/default/solr.in.sh
 
 # Used only for Solr < 5.
 solr_log_file_path: /var/log/solr.log
 solr_host: "0.0.0.0"
+
+# repli
+solr_repli_role:
+solr_repli_master:
+solr_repli_pollinterval:
+#{{ solr_home }}/data/{{ solr_cores }}/conf/solrconfig.xml 
