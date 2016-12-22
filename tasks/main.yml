@@ -25,6 +25,7 @@
     creates: "{{ solr_workspace }}/{{ solr_filename }}/CHANGES.txt"
     copy: no
 
+
 # Install Solr < 5.
 - include: install-pre5.yml
   when: "solr_version.split('.')[0] < '5'"
