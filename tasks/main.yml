@@ -47,3 +47,7 @@
 # Configure solr.
 - include: configure.yml
   when: "solr_version.split('.')[0] >= '5'"
+
+# Configure repli.
+- include: repli.yml
+  when: "solr_repli is defined"
