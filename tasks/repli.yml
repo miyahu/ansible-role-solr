@@ -6,3 +6,4 @@
     mode: 0755
     with_items:
        - "{{ solr_cores }}"
+    tags: solr_repli
