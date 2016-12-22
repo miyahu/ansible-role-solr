@@ -50,4 +50,4 @@
 
 # Configure repli.
 - include: repli.yml
-  when: "solr_repli is defined"
+  when: "solr_repli_role is defined"
