@@ -1,8 +1,8 @@
 ---
 - name: Configure replication.
   template:
-    src: solrconfig.xml.j2
-    dest: "{{ solr_home }}/data/{{ item }}/conf/solrconfig.xml"
+    src: "solrconfig-{{ solr_version }}.xml.j2"
+    dest: "{{ solr_home }}/{{ item }}/conf/solrconfig.xml"
     mode: 0755
   with_items:
      - "{{ solr_cores }}"
