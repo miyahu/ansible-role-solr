@@ -86,7 +86,7 @@
             <str name="masterUrl">http://{{ solr_repli_master }}:{{ solr_port }}/solr/{{ item }}/</str>
 {% endif %}
 {% if solr_repli_pollinterval is defined %}
-            <str name="pollInterval">{{ solr_repli_pollinterval|default('00:00:5') }}</str>
+            <str name="pollInterval">{{ solr_repli_pollinterval }}</str>
 {% else %}
             <str name="pollInterval">00:00:5</str>
 {% endif %}
