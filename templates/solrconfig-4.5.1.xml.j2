@@ -91,5 +91,29 @@
     <defaultQuery>solr</defaultQuery>
   </admin>
 
+{% if solr_repli_role is defined and 'master' in solr_repli_role %}
+ <requestHandler name="/replication" class="solr.ReplicationHandler" >
+    <lst name="master">
+        <str name="replicateAfter">startup</str>
+        <str name="replicateAfter">commit</str>
+        <!--If configuration files need to be replicated give the names here, separated by comma -->
+        <str name="confFiles">schema.xml,stopwords.txt,elevate.xml</str>
+        <str name="maxNumberOfBackups">0</str>
+    </lst>
+  </requestHandler>
+{% endif %}
+{% if solr_repli_role is defined and 'slave' in solr_repli_role %}
+ <requestHandler name="/replication" class="solr.ReplicationHandler" >
+        <lst name="slave">
+{% if solr_repli_master is defined %}
+            <str name="masterUrl">http://{{ solr_repli_master }}:{{ solr_port }}/solr/{{ item }}/</str>
+{% endif %}
+{% if solr_repli_pollinterval is defined %}
+            <str name="pollInterval">{{ solr_repli_pollinterval|default('00:00:5') }}</str>
+{% endif %}
+         </lst>
+    </requestHandler>
+{% endif %}
+
 </config>
 
