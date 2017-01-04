@@ -32,4 +32,3 @@ solr_host: "0.0.0.0"
 solr_repli_role:
 solr_repli_master:
 solr_repli_pollinterval:
-#{{ solr_home }}/data/{{ solr_cores }}/conf/solrconfig.xml 
