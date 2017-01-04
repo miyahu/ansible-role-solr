@@ -19,12 +19,10 @@
     force: no
 
 - name: Expand Solr.
-  unarchive:
-    src: "{{ solr_workspace }}/{{ solr_filename }}.tgz"
-    dest: "{{ solr_workspace }}"
-    creates: "{{ solr_workspace }}/{{ solr_filename }}/CHANGES.txt"
-    copy: no
-
+  command: tar zvxf "{{ solr_filename }}".tgz
+  args:
+    chdir: "{{ solr_workspace }}/"
+    creates: "{{ solr_filename }}"
 
 # Install Solr < 5.
 - include: install-pre5.yml
