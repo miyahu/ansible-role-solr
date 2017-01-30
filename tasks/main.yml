@@ -1,4 +1,17 @@
 ---
+- name: Install solr dependances
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  with_items:
+    - openjdk-8-jre
+    - xmlstarlet
+  tags:
+    - solr_dep
+    - solr
+
 - include: user.yml
   when: solr_create_user
 
